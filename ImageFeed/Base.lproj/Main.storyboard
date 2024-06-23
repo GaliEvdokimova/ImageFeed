@@ -67,6 +67,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="cellImage" destination="yRi-Eh-zZB" id="0oB-wG-qPJ"/>
+                                            <outlet property="dateLabel" destination="Rfm-qe-KTI" id="sJ4-cz-GvF"/>
+                                            <outlet property="likeButton" destination="gvo-6U-UQ6" id="v6i-fi-5p4"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -85,9 +90,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="cellImage" destination="yRi-Eh-zZB" id="D5K-Hb-G2C"/>
-                        <outlet property="dateLabel" destination="Rfm-qe-KTI" id="zDp-GN-Hvh"/>
-                        <outlet property="likeButton" destination="gvo-6U-UQ6" id="O0H-bg-X98"/>
                         <outlet property="tableView" destination="g5Q-FJ-XKG" id="p5c-vi-LcZ"/>
                     </connections>
                 </viewController>
