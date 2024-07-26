@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="L6J-yv-lka">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -99,7 +99,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1642" y="-515"/>
+            <point key="canvasLocation" x="743" y="-534"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="r5I-fd-iIX">
@@ -115,8 +115,8 @@
                         </tabBarAppearance>
                     </tabBar>
                     <connections>
-                        <segue destination="hSu-vG-61V" kind="relationship" relationship="viewControllers" id="mGe-Gl-LTO"/>
                         <segue destination="hdp-YW-Brp" kind="relationship" relationship="viewControllers" id="5EK-VS-QXU"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="iyQ-bf-vv5"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ubq-eX-qVO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -157,9 +157,6 @@
                                     <constraint firstAttribute="height" constant="44" id="uuR-7W-Ao7"/>
                                 </constraints>
                                 <state key="normal" image="logout_button"/>
-                                <connections>
-                                    <action selector="didTapLogoutButton:" destination="hdp-YW-Brp" eventType="touchUpInside" id="orN-Un-uPJ"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, World!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCf-1y-CQR" userLabel="Description Label">
                                 <rect key="frame" x="16" y="229" width="361" height="16"/>
@@ -206,25 +203,6 @@
             </objects>
             <point key="canvasLocation" x="744" y="-1398"/>
         </scene>
-        <!--Item-->
-        <scene sceneID="SS0-3k-LYE">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hSu-vG-61V" userLabel="Item" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="ghq-x1-C72"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PbG-mu-zQ7">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="bsO-Xg-M8a"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BU0-fr-ear" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="793" y="-515"/>
-        </scene>
         <!--Single Image View Controller-->
         <scene sceneID="0mP-IE-ag4">
             <objects>
@@ -245,7 +223,7 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="Backward"/>
                                 <connections>
-                                    <action selector="didTapBackButton:" destination="c3v-Gm-Wjg" eventType="touchUpInside" id="n5e-ch-snq"/>
+                                    <action selector="didTapBackButton:" destination="c3v-Gm-Wjg" eventType="touchUpInside" id="lkx-0U-Z0F"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -267,7 +245,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hJB-VD-DhH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2480" y="-515"/>
+            <point key="canvasLocation" x="1671" y="-535"/>
         </scene>
     </scenes>
     <resources>
