@@ -78,7 +78,7 @@ extension ImagesListViewController {
 }
 
 extension ImagesListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) { 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: showSingleImageSegueIdentifier, sender: indexPath)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 
