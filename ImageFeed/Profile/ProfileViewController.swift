@@ -85,7 +85,6 @@ final class ProfileViewController: UIViewController {
             logoutButton.heightAnchor.constraint(equalToConstant: 24)
         ])
     }
-    
     @objc private func didTapLogoutButton() { }
 }
 
