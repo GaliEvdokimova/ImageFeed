@@ -7,8 +7,8 @@
 
 import UIKit
 
-let AccessKey = "<24SXpvG8Unz8TltKZZYwfkPrh2Y1yBftK_jcmCkQlU4>"
-let SecretKey = "<kX6lwVWvg78NFwd_KTvviD74h_Sy2rM3TXzJfrKIEFQ>"
-let RedirectURI = "<urn:ietf:wg:oauth:2.0:oob>"
-let AccessScope = "public+read_user+write_likes"
-let DefaultBaseURL = URL(string: "https://api.unsplash.com")!
+let accessKey = "<24SXpvG8Unz8TltKZZYwfkPrh2Y1yBftK_jcmCkQlU4>"
+let secretKey = "<kX6lwVWvg78NFwd_KTvviD74h_Sy2rM3TXzJfrKIEFQ>"
+let redirectURI = "<urn:ietf:wg:oauth:2.0:oob>"
+let accessScope = "public+read_user+write_likes"
+let defaultBaseURL = URL(string: "https://api.unsplash.com")!
