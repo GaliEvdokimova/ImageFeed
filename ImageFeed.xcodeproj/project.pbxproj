@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20056C182C9C81F1003B9878 /* OAuth2Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205B48FD2C77756B0060ADBC /* OAuth2Service.swift */; };
+		20056C192C9C81F8003B9878 /* OAuth2TokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20671B6E2C822EEE0085AEA6 /* OAuth2TokenStorage.swift */; };
 		2017B8212C51171F004A961F /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2017B8202C51171F004A961F /* SingleImageViewController.swift */; };
 		2051C3AE2C22EBE2006647EC /* ImagesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2051C3AD2C22EBE2006647EC /* ImagesListCell.swift */; };
 		2051C3B42C498942006647EC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2051C3B32C498942006647EC /* ProfileViewController.swift */; };
@@ -203,10 +205,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20056C192C9C81F8003B9878 /* OAuth2TokenStorage.swift in Sources */,
 				20DF41AD2C10837800769039 /* ImagesListViewController.swift in Sources */,
 				2051C3AE2C22EBE2006647EC /* ImagesListCell.swift in Sources */,
 				2051C3B42C498942006647EC /* ProfileViewController.swift in Sources */,
 				20DF41A92C10837800769039 /* AppDelegate.swift in Sources */,
+				20056C182C9C81F1003B9878 /* OAuth2Service.swift in Sources */,
 				205B48EE2C6894520060ADBC /* Constants.swift in Sources */,
 				2017B8212C51171F004A961F /* SingleImageViewController.swift in Sources */,
 				205B48F72C68953F0060ADBC /* WebViewViewController.swift in Sources */,
