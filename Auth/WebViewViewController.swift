@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import WebKit
+@preconcurrency import WebKit
 
 fileprivate let unsplashAuthorizeURLString = "https://unsplash.com/oauth/authorize"
 
