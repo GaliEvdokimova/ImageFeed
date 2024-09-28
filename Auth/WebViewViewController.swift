@@ -31,10 +31,10 @@ final class WebViewViewController: UIViewController {
             return
         }
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: AccessKey),
-            URLQueryItem(name: "redirect_uri", value: RedirectURI),
+            URLQueryItem(name: "client_id", value: Constants.accessKey),
+            URLQueryItem(name: "redirect_uri", value: Constants.redirectURI),
             URLQueryItem(name: "response_type", value: "code"),
-            URLQueryItem(name: "scope", value: AccessScope)
+            URLQueryItem(name: "scope", value: Constants.accessScope)
         ]
         guard let url = urlComponents.url else {
             return
@@ -61,7 +61,7 @@ final class WebViewViewController: UIViewController {
         updateProgress()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         webView.removeObserver(
             self,
@@ -104,19 +104,20 @@ extension WebViewViewController: WKNavigationDelegate {
         } else {
             decisionHandler(.allow)
         }
+        print("Navigation action: \(navigationAction.request.url?.absoluteString ?? "no url")") // Отладочный вывод
     }
         private func code(from navigationAction: WKNavigationAction) -> String? {
-            if
-                let url = navigationAction.request.url,
-                let urlComponents = URLComponents(string: url.absoluteString),
-                urlComponents.path == "/oauth/authorize/native",
-                let items = urlComponents.queryItems,
-                let codeItem = items.first(where: { $0.name == "code"})
-            {
-                return codeItem.value
-            } else {
-                return nil
+            if let url = navigationAction.request.url {
+                print("Navigating to URL: \(url.absoluteString)")
+                if let urlComponents = URLComponents(string: url.absoluteString),
+                   urlComponents.path == "/oauth/authorize/native",
+                   let items = urlComponents.queryItems,
+                   let codeItem = items.first(where: { $0.name == "code"}) {
+                    print("Authorization code item: \(codeItem)") // Отладочный вывод
+                    return codeItem.value
+                }
             }
+                return nil
         }
     }
 

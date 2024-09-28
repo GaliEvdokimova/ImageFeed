@@ -13,7 +13,8 @@ protocol AuthViewControllerDelegate: AnyObject {
 
 final class AuthViewController: UIViewController {
     private let showWebViewSegueIdentifier = "ShowWebView"
-    
+    private let oAuth2Service = OAuth2Service.shared
+    private let tokenStorage = OAuth2TokenStorage.shared
     weak var delegate: AuthViewControllerDelegate?
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -34,7 +35,18 @@ final class AuthViewController: UIViewController {
 extension AuthViewController: WebViewViewControllerDelegate {
     func webViewViewController(_ vc: WebViewViewController, didAuthenticateWithCode code: String) {
         vc.dismiss(animated: true)
-        delegate?.authViewController(self, didAuthenticateWithCode: code)
+        print("Delegate method called with code: \(code)")
+        oAuth2Service.fetchOAuthToken(code: code) {
+            result in
+            switch result {
+            case .success(let token):
+                print("Token received: \(token)")
+                self.tokenStorage.token = token
+                self.delegate?.authViewController(self, didAuthenticateWithCode: code)
+            case .failure(let error):
+                print("Failed to fetch token: \(error)")
+            }
+        }
     }
 
     func webViewViewControllerDidCancel(_ vc: WebViewViewController) {

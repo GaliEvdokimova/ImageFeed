@@ -62,7 +62,7 @@ extension SplashViewController: AuthViewControllerDelegate {
         }
     }
     private func fetchOAuthToken(_ code: String) {
-        service.fetchOAuthToken(code) { [weak self] result in
+        service.fetchOAuthToken(code: code) { [weak self] result in
             guard let self else { return }
             switch result {
             case .success(_):

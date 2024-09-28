@@ -192,9 +192,9 @@
                         <color key="backgroundColor" name="YP Black"/>
                         <constraints>
                             <constraint firstItem="W20-jw-GNU" firstAttribute="centerX" secondItem="eVF-aQ-dvG" secondAttribute="centerX" id="AbH-jT-gcn"/>
-                            <constraint firstItem="6rr-PG-5Wv" firstAttribute="centerY" secondItem="eVF-aQ-dvG" secondAttribute="centerY" constant="28" id="P5J-4N-EyW"/>
+                            <constraint firstItem="6rr-PG-5Wv" firstAttribute="centerY" secondItem="N2E-di-blw" secondAttribute="centerY" id="P5J-4N-EyW"/>
                             <constraint firstItem="N2E-di-blw" firstAttribute="bottom" secondItem="W20-jw-GNU" secondAttribute="bottom" constant="90" id="mYg-MT-1g6"/>
-                            <constraint firstItem="6rr-PG-5Wv" firstAttribute="centerX" secondItem="eVF-aQ-dvG" secondAttribute="centerX" id="v23-lO-aE1"/>
+                            <constraint firstItem="6rr-PG-5Wv" firstAttribute="centerX" secondItem="N2E-di-blw" secondAttribute="centerX" id="v23-lO-aE1"/>
                             <constraint firstItem="W20-jw-GNU" firstAttribute="leading" secondItem="N2E-di-blw" secondAttribute="leading" constant="16" id="xbl-xt-ffH"/>
                             <constraint firstItem="N2E-di-blw" firstAttribute="trailing" secondItem="W20-jw-GNU" secondAttribute="trailing" constant="16" id="yaF-WI-90d"/>
                         </constraints>

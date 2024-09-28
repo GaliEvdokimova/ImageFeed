@@ -40,6 +40,11 @@ final class ImagesListViewController: UIViewController {
                 return
             }
             let image = UIImage(named: photosName[indexPath.row])
+            if image == nil {
+                print("Image is nil for \(String(describing: image))")
+            } else {
+                print("Image \(String(describing: image)) loaded successfully")
+            }
             viewController.image = image
         }
         else {
