@@ -6,7 +6,7 @@
 //
 
 import UIKit
-@preconcurrency import WebKit
+import WebKit
 
 fileprivate let unsplashAuthorizeURLString = "https://unsplash.com/oauth/authorize"
 
@@ -15,40 +15,20 @@ protocol WebViewViewControllerDelegate: AnyObject {
     func webViewViewControllerDidCancel(_ vc: WebViewViewController)
 }
 
-final class WebViewViewController: UIViewController {
+final class WebViewViewController: UIViewController, WKNavigationDelegate {
     
     @IBOutlet private var webView: WKWebView!
     
     @IBOutlet private var progressView: UIProgressView!
     
-    
     weak var delegate: WebViewViewControllerDelegate?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .ypBlack
         webView.navigationDelegate = self
-        guard var urlComponents = URLComponents(string: unsplashAuthorizeURLString) else {
-            return
-        }
-        urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: Constants.accessKey),
-            URLQueryItem(name: "redirect_uri", value: Constants.redirectURI),
-            URLQueryItem(name: "response_type", value: "code"),
-            URLQueryItem(name: "scope", value: Constants.accessScope)
-        ]
-        guard let url = urlComponents.url else {
-            return
-        }
-  
-        let request = URLRequest(url: url)
-        webView.load(request)
-        
-        webView.addObserver(
-            self,
-            forKeyPath: #keyPath(WKWebView.estimatedProgress),
-            options: .new,
-            context: nil)
-        updateProgress()
+        configureBackButton()
+        loadAuthView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -90,9 +70,26 @@ final class WebViewViewController: UIViewController {
     @IBAction private func didTapBackButton(_ sender: Any?) {
         delegate?.webViewViewControllerDidCancel(self)
     }
-}
     
-extension WebViewViewController: WKNavigationDelegate {
+    private func loadAuthView() {
+        guard var urlComponents = URLComponents(string: unsplashAuthorizeURLString) else {
+            return
+        }
+        urlComponents.queryItems = [
+            URLQueryItem(name: "client_id", value: Constants.accessKey),
+            URLQueryItem(name: "redirect_uri", value: Constants.redirectURI),
+            URLQueryItem(name: "response_type", value: "code"),
+            URLQueryItem(name: "scope", value: Constants.accessScope)
+        ]
+        guard let url = urlComponents.url else {
+            return
+        }
+        
+        let request = URLRequest(url: url)
+        webView.load(request)
+        updateProgress()
+    }
+    
     func webView(
         _ webView: WKWebView,
         decidePolicyFor navigationAction: WKNavigationAction,
@@ -106,21 +103,28 @@ extension WebViewViewController: WKNavigationDelegate {
         }
         print("Navigation action: \(navigationAction.request.url?.absoluteString ?? "no url")") // Отладочный вывод
     }
-        private func code(from navigationAction: WKNavigationAction) -> String? {
-            if let url = navigationAction.request.url {
-                print("Navigating to URL: \(url.absoluteString)")
-                if let urlComponents = URLComponents(string: url.absoluteString),
-                   urlComponents.path == "/oauth/authorize/native",
-                   let items = urlComponents.queryItems,
-                   let codeItem = items.first(where: { $0.name == "code"}) {
-                    print("Authorization code item: \(codeItem)") // Отладочный вывод
-                    return codeItem.value
-                }
+    private func code(from navigationAction: WKNavigationAction) -> String? {
+        if let url = navigationAction.request.url {
+            print("Navigating to URL: \(url.absoluteString)")
+            if let urlComponents = URLComponents(string: url.absoluteString),
+               urlComponents.path == "/oauth/authorize/native",
+               let items = urlComponents.queryItems,
+               let codeItem = items.first(where: { $0.name == "code"}) {
+                print("Authorization code item: \(codeItem)") // Отладочный вывод
+                return codeItem.value
             }
-                return nil
         }
+        return nil
     }
-
+    
+    private func configureBackButton() {
+        navigationController?.navigationBar.backIndicatorImage = UIImage(named: "nav_back_button")
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "nav_back_button")
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem?.tintColor? = UIColor.ypBlack
+    }
+    
+}
         
        
     
