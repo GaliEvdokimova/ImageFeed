@@ -185,7 +185,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="poP-AG-1Uu" kind="show" identifier="showWebView" id="8ro-Ua-C2H"/>
+                                    <segue destination="poP-AG-1Uu" kind="presentation" identifier="showWebView" modalPresentationStyle="overFullScreen" id="8ro-Ua-C2H"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -223,7 +223,7 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8L3-wK-Ozn" userLabel="backButton">
-                                <rect key="frame" x="0.0" y="44" width="64" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="64" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="h5c-Dg-1xw"/>
                                     <constraint firstAttribute="width" constant="64" id="nbC-1m-ope"/>
@@ -235,7 +235,7 @@
                                 </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="TuJ-6D-wCC">
-                                <rect key="frame" x="0.0" y="84" width="393" height="4"/>
+                                <rect key="frame" x="0.0" y="40" width="393" height="4"/>
                                 <color key="progressTintColor" name="YP Black"/>
                             </progressView>
                         </subviews>
@@ -245,7 +245,7 @@
                             <constraint firstItem="0yq-nH-a0u" firstAttribute="trailing" secondItem="TuJ-6D-wCC" secondAttribute="trailing" id="0Fh-cq-pRT"/>
                             <constraint firstItem="TuJ-6D-wCC" firstAttribute="top" secondItem="0yq-nH-a0u" secondAttribute="top" constant="40" id="ACg-fI-dZB"/>
                             <constraint firstItem="8L3-wK-Ozn" firstAttribute="leading" secondItem="0yq-nH-a0u" secondAttribute="leading" id="H5u-uX-nQm"/>
-                            <constraint firstAttribute="trailing" secondItem="fBM-o1-EoP" secondAttribute="trailing" id="HRL-dj-3lC"/>
+                            <constraint firstItem="0yq-nH-a0u" firstAttribute="trailing" secondItem="fBM-o1-EoP" secondAttribute="trailing" id="HRL-dj-3lC"/>
                             <constraint firstItem="TuJ-6D-wCC" firstAttribute="leading" secondItem="0yq-nH-a0u" secondAttribute="leading" id="SoT-9m-gNK"/>
                             <constraint firstItem="fBM-o1-EoP" firstAttribute="top" secondItem="62Q-1H-Q6c" secondAttribute="top" id="dba-5u-5qu"/>
                             <constraint firstItem="fBM-o1-EoP" firstAttribute="leading" secondItem="62Q-1H-Q6c" secondAttribute="leading" id="dvM-nq-jFu"/>

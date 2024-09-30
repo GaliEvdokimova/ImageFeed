@@ -23,7 +23,7 @@ final class AuthViewController: UIViewController, WebViewViewControllerDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureBackButton()
+//        configureBackButton()
         
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -45,12 +45,12 @@ final class AuthViewController: UIViewController, WebViewViewControllerDelegate 
         dismiss(animated: true)
     }
     
-    private func configureBackButton() {
-        navigationController?.navigationBar.backIndicatorImage = UIImage(named: "nav_back_button_black")
-        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "nav_back_button_black")
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        navigationItem.backBarButtonItem?.tintColor? = UIColor.ypBlack
-    }
+//    private func configureBackButton() {
+//        navigationController?.navigationBar.backIndicatorImage = UIImage(named: "nav_back_button_black")
+//        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "nav_back_button_black")
+//        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+//        navigationItem.backBarButtonItem?.tintColor? = UIColor.ypBlack
+//    }
 }
 
 
