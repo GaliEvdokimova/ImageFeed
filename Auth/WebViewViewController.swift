@@ -95,26 +95,22 @@ final class WebViewViewController: UIViewController, WKNavigationDelegate {
         decidePolicyFor navigationAction: WKNavigationAction,
         decisionHandler: @escaping (WKNavigationActionPolicy) -> Void
     ) {
-        if code(from: navigationAction) != nil {
+        if let code = code(url: navigationAction.request.url) {
             //TODO: process code
             decisionHandler(.cancel)
+            delegate?.webViewViewController(self, didAuthenticateWithCode: code)
         } else {
             decisionHandler(.allow)
         }
         print("Navigation action: \(navigationAction.request.url?.absoluteString ?? "no url")") // Отладочный вывод
     }
-    private func code(from navigationAction: WKNavigationAction) -> String? {
-        if let url = navigationAction.request.url {
-            print("Navigating to URL: \(url.absoluteString)")
-            if let urlComponents = URLComponents(string: url.absoluteString),
+    private func code(url: URL?) -> String? {
+        guard let url,
+            let urlComponents = URLComponents(string: url.absoluteString),
                urlComponents.path == "/oauth/authorize/native",
-               let items = urlComponents.queryItems,
-               let codeItem = items.first(where: { $0.name == "code"}) {
-                print("Authorization code item: \(codeItem)") // Отладочный вывод
-                return codeItem.value
-            }
-        }
-        return nil
+              let items = urlComponents.queryItems?.first(where: { $0.name == "code"}) else {
+            return nil }
+        return items.value
     }
 }
         
