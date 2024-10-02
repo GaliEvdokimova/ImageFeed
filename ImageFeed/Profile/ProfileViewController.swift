@@ -87,6 +87,7 @@ final class ProfileViewController: UIViewController {
     }
     
     @objc private func didTapLogoutButton() {
+        // TODO: - Реализовать логику выхода из профиля в следующих спринтах
         print("Button was tapped")
     }
 }

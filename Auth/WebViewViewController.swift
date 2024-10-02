@@ -8,7 +8,6 @@
 import UIKit
 import WebKit
 
-fileprivate let unsplashAuthorizeURLString = "https://unsplash.com/oauth/authorize"
 
 protocol WebViewViewControllerDelegate: AnyObject {
     func webViewViewController(_ vc: WebViewViewController, didAuthenticateWithCode code: String)
@@ -16,6 +15,8 @@ protocol WebViewViewControllerDelegate: AnyObject {
 }
 
 final class WebViewViewController: UIViewController, WKNavigationDelegate {
+    
+    private let unsplashAuthorizeURLString = "https://unsplash.com/oauth/authorize"
     
     @IBOutlet private var webView: WKWebView!
     

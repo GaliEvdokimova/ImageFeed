@@ -13,11 +13,14 @@ enum Constants {
     static let redirectURI = "urn:ietf:wg:oauth:2.0:oob"
     static let accessScope = "public+read_user+write_likes"
     static private var defaultBaseURL: URL {
-        guard let url = URL(string: "https://api.unsplash.com") else {preconditionFailure("Unable to construct unsplashUrl")}
+        guard let url = URL(string: "https://api.unsplash.com") else {
+            preconditionFailure("Unable to construct unsplashUrl")
+        }
         return url
     }
     static var getTokenURL: URL {
-        guard let url = URL(string: "https://unsplash.com/oauth/token") else {preconditionFailure("Unable to construct unsplashToken")}
+        guard let url = URL(string: "https://unsplash.com/oauth/token") else { preconditionFailure("Unable to construct unsplashToken")
+        }
         return url
     }
 }

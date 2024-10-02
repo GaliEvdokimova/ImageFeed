@@ -13,8 +13,6 @@ protocol AuthViewControllerDelegate: AnyObject {
 
 final class AuthViewController: UIViewController, WebViewViewControllerDelegate {
     private let showWebViewSegueIdentifier = "ShowWebView"
-    private let oAuth2Service = OAuth2Service.shared
-    private let tokenStorage = OAuth2TokenStorage.shared
     weak var delegate: AuthViewControllerDelegate?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -23,9 +21,8 @@ final class AuthViewController: UIViewController, WebViewViewControllerDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        configureBackButton()
-        
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == showWebViewSegueIdentifier {
             guard
@@ -44,13 +41,6 @@ final class AuthViewController: UIViewController, WebViewViewControllerDelegate 
     func webViewViewControllerDidCancel(_ vc: WebViewViewController) {
         dismiss(animated: true)
     }
-    
-//    private func configureBackButton() {
-//        navigationController?.navigationBar.backIndicatorImage = UIImage(named: "nav_back_button_black")
-//        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "nav_back_button_black")
-//        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-//        navigationItem.backBarButtonItem?.tintColor? = UIColor.ypBlack
-//    }
 }
 
 

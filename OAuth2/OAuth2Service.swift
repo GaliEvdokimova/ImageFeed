@@ -9,8 +9,7 @@ import UIKit
 
 final class OAuth2Service {
     static let shared = OAuth2Service()
-    private init() {
-    }
+    private init() {}
     
     private let urlSession = URLSession.shared
     
