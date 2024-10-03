@@ -130,10 +130,10 @@
             </objects>
             <point key="canvasLocation" x="-1653" y="-1786"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="r5I-fd-iIX">
             <objects>
-                <tabBarController id="L6J-yv-lka" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarViewController" id="L6J-yv-lka" customClass="TabBarViewController" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pRu-WR-VnK">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -185,7 +185,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="poP-AG-1Uu" kind="presentation" identifier="showWebView" modalPresentationStyle="overFullScreen" id="8ro-Ua-C2H"/>
+                                    <segue destination="poP-AG-1Uu" kind="presentation" identifier="ShowWebView" modalPresentationStyle="overFullScreen" id="8ro-Ua-C2H"/>
                                 </connections>
                             </button>
                         </subviews>
