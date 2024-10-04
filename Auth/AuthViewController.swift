@@ -19,10 +19,6 @@ final class AuthViewController: UIViewController, WebViewViewControllerDelegate 
         return .lightContent
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == showWebViewSegueIdentifier {
             guard
