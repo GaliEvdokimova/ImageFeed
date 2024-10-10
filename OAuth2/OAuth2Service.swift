@@ -8,14 +8,7 @@
 import UIKit
 
 final class OAuth2Service {
-    var authToken: String? {
-        get {
-            OAuth2TokenStorage().token
-        }
-        set {
-            OAuth2TokenStorage().token = newValue
-        }
-    }
+    private var tokenStorage = OAuth2TokenStorage()
     static let shared = OAuth2Service()
     private init() {}
     private let urlSession = URLSession.shared
@@ -26,24 +19,24 @@ final class OAuth2Service {
         
         let task = urlSession.data(for: request) { [weak self] result in
             
-            guard let self else { preconditionFailure("self is unavalible") }
+            guard let self else { return }
             
             switch result {
             case .success(let data):
                 
                 do {
-                    let OAuthTokenResponseBody = try decoder.decode(OAuthTokenResponseBody.self, from: data)
-                    print(OAuthTokenResponseBody)
-                    print(OAuthTokenResponseBody.accessToken)
-                    self.authToken = OAuthTokenResponseBody.accessToken
-                    completion(.success(OAuthTokenResponseBody.accessToken))
+                    let responseBody = try decoder.decode(OAuthTokenResponseBody.self, from: data)
+                    self.tokenStorage.token = responseBody.accessToken
+                    completion(.success(responseBody.accessToken))
+                    print("Successfully received token: \(responseBody.accessToken)")
                 } catch {
                     completion(.failure(error))
+                    print("Decoding error: \(error.localizedDescription)")
                 }
                 
             case .failure(let error):
                 completion(.failure(error))
-                
+                print("Error: \(error.localizedDescription)")
             }
         }
         task.resume()

@@ -295,6 +295,7 @@
                                         <rect key="frame" x="20" y="20" width="390" height="847"/>
                                     </imageView>
                                 </subviews>
+                                <color key="backgroundColor" name="YP Black"/>
                                 <constraints>
                                     <constraint firstItem="AXV-DL-AdZ" firstAttribute="trailing" secondItem="Yb2-eh-zb0" secondAttribute="trailing" id="5qe-YI-YaP"/>
                                     <constraint firstItem="AXV-DL-AdZ" firstAttribute="leading" secondItem="Yb2-eh-zb0" secondAttribute="leading" id="5uG-IO-hWZ"/>
