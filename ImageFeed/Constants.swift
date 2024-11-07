@@ -17,9 +17,5 @@ enum Constants {
     static let baseAuthTokenPath = "/oauth/token"
     static let authorizedPath = "/oauth/authorize/native"
     static let unsplashAuthorizeURLString = "https://unsplash.com/oauth/authorize"
-    static var getTokenURL: URL {
-        guard let url = URL(string: "https://unsplash.com/oauth/token") else { preconditionFailure("Unable to construct unsplashToken")
-        }
-        return url
-    }
+    static var getTokenURL = "https://unsplash.com/oauth/token"
 }

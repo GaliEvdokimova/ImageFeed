@@ -23,7 +23,6 @@
 		20ADCB182CC80250008C400D /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ADCB172CC80250008C400D /* ProfileService.swift */; };
 		20ADCB1A2CC8061B008C400D /* ProfileStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ADCB192CC8061B008C400D /* ProfileStructures.swift */; };
 		20ADCB1C2CC85372008C400D /* URLRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ADCB1B2CC85372008C400D /* URLRequestBuilder.swift */; };
-		20D1F26C2CA733D800752A97 /* OAuthTokenResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D1F26B2CA733D800752A97 /* OAuthTokenResponseBody.swift */; };
 		20D1F2702CADF49400752A97 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D1F26F2CADF42900752A97 /* URLSession.swift */; };
 		20DF41A92C10837800769039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF41A82C10837800769039 /* AppDelegate.swift */; };
 		20DF41AB2C10837800769039 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF41AA2C10837800769039 /* SceneDelegate.swift */; };
@@ -49,7 +48,6 @@
 		20ADCB172CC80250008C400D /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		20ADCB192CC8061B008C400D /* ProfileStructures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStructures.swift; sourceTree = "<group>"; };
 		20ADCB1B2CC85372008C400D /* URLRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestBuilder.swift; sourceTree = "<group>"; };
-		20D1F26B2CA733D800752A97 /* OAuthTokenResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthTokenResponseBody.swift; sourceTree = "<group>"; };
 		20D1F26F2CADF42900752A97 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
 		20DF41A52C10837800769039 /* ImageFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20DF41A82C10837800769039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -131,7 +129,6 @@
 			children = (
 				205B48FD2C77756B0060ADBC /* OAuth2Service.swift */,
 				20671B6E2C822EEE0085AEA6 /* OAuth2TokenStorage.swift */,
-				20D1F26B2CA733D800752A97 /* OAuthTokenResponseBody.swift */,
 			);
 			path = OAuth2;
 			sourceTree = "<group>";
@@ -283,7 +280,6 @@
 				20ADCB1C2CC85372008C400D /* URLRequestBuilder.swift in Sources */,
 				2017B8212C51171F004A961F /* SingleImageViewController.swift in Sources */,
 				205B48F72C68953F0060ADBC /* WebViewViewController.swift in Sources */,
-				20D1F26C2CA733D800752A97 /* OAuthTokenResponseBody.swift in Sources */,
 				205B48F92C6895670060ADBC /* AuthViewController.swift in Sources */,
 				20DF41AB2C10837800769039 /* SceneDelegate.swift in Sources */,
 				20671B702C98ABF80085AEA6 /* SplashViewController.swift in Sources */,

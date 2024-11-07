@@ -13,9 +13,7 @@ final class OAuth2Service {
     private let urlSession = URLSession.shared
     private var currentTask: URLSessionTask?
     private var lastCode: String?
-    private let decoder = JSONDecoder()
-    private let networkError = NetworkError.invalidRequest
-    private let builder: URLRequestBuider
+    private let builder = URLRequestBuider()
     
     init(
         urlSession: URLSession = .shared,
@@ -52,19 +50,33 @@ final class OAuth2Service {
         self.currentTask = task
         task.resume()
     }
-}
-    
+
     
     // MARK: - Private Methods
-private func makeTokenRequest(code: String) -> URLRequest? {
-    builder.makeHTTPRequest(
-        path: "\(Constants.baseAuthTokenPath)"
-        + "?client_id=\(Constants.accessKey)"
-        + "&&client_secret=\(Constants.secretKey)"
-        + "&&redirect_uri=\(Constants.redirectURI)"
-        + "&&code=\(code)"
-        + "&&grant_type=authorization_code",
-        httpMethod: "POST",
-        defaultBaseURL: Constants.defaultBaseURLString
-    )
+    private func makeTokenRequest(code: String) -> URLRequest? {
+        builder.makeHTTPRequest(
+            path: "\(Constants.baseAuthTokenPath)"
+            + "?client_id=\(Constants.accessKey)"
+            + "&&client_secret=\(Constants.secretKey)"
+            + "&&redirect_uri=\(Constants.redirectURI)"
+            + "&&code=\(code)"
+            + "&&grant_type=authorization_code",
+            httpMethod: "POST",
+            defaultBaseURL: Constants.defaultBaseURLString
+        )
+    }
+    
+    private struct OAuthTokenResponseBody: Decodable {
+        let accessToken: String
+        let tokenType: String
+        let scope: String
+        let createdAt: Int
+        
+        private enum CodingKeys: String, CodingKey {
+            case accessToken = "access_token"
+            case tokenType = "token_type"
+            case scope
+            case createdAt = "created_at"
+        }
+    }
 }
