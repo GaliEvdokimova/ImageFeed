@@ -138,7 +138,7 @@ final class ProfileViewController: UIViewController {
         avatarImageView.kf.indicatorType = .activity
         avatarImageView.kf.setImage(with: url)
     }
-    
+        
     private func setupProfileViewConstrains() {
         NSLayoutConstraint.activate([
         avatarImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
