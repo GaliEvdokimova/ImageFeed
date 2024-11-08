@@ -9,21 +9,13 @@ import UIKit
 
 final class OAuth2Service {
     static let shared = OAuth2Service()
-    private var storage = OAuth2TokenStorage()
-    private let urlSession = URLSession.shared
+    private var storage = OAuth2TokenStorage.shared
+    private var urlSession = URLSession.shared
     private var currentTask: URLSessionTask?
     private var lastCode: String?
-    private let builder = URLRequestBuider()
+    private let builder = URLRequestBuilder.shared
     
-    init(
-        urlSession: URLSession = .shared,
-        storage: OAuth2TokenStorage = .shared,
-        builder: URLRequestBuider = .shared
-    ) {
-        self.urlSession = urlSession
-        self.storage = storage
-        self.builder = builder
-    }
+
     
     func fetchOAuthToken(_ code: String, completion: @escaping (Result<String, Error>) -> Void) {
         assert(Thread.isMainThread)
