@@ -15,7 +15,7 @@ final class ProfileImageService {
     private let urlSession = URLSession.shared
     private var currentTask: URLSessionTask?
     private let builder: URLRequestBuilder
-    private(set) var avatarURL: String?
+    private(set) var avatarURL: URL?
     private var lastUserName: String?
     private let constants = Constants.defaultBaseURL
     
@@ -41,7 +41,7 @@ final class ProfileImageService {
                 switch result {
                 case .success(let profilePhoto):
                     guard let profilePhoto = profilePhoto.profileImage?.small else { return }
-                    self.avatarURL = profilePhoto
+                    self.avatarURL = URL(string: profilePhoto)
                     completion(.success(profilePhoto))
                     NotificationCenter.default
                         .post(
