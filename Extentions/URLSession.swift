@@ -28,7 +28,9 @@ extension URLSession {
         }
         
         let task = dataTask(with: request, completionHandler: { data, response, error in
-                if let data , let response , let statusCode = (response as? HTTPURLResponse)?.statusCode {
+                if let data,
+                    let response,
+                    let statusCode = (response as? HTTPURLResponse)?.statusCode {
                     if 200 ..< 300 ~= statusCode {
                         do {
                             let decoder = JSONDecoder()

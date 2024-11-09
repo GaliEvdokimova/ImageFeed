@@ -9,15 +9,24 @@ import UIKit
 
 final class OAuth2Service {
     static let shared = OAuth2Service()
-    private var storage = OAuth2TokenStorage.shared
-    private var urlSession = URLSession.shared
+    private var storage: OAuth2TokenStorage
+    private var urlSession: URLSession
     private var currentTask: URLSessionTask?
     private var lastCode: String?
-    private let builder = URLRequestBuilder.shared
+    private let builder: URLRequestBuilder
     
-
+    init(
+        storage: OAuth2TokenStorage = .shared,
+        urlSession: URLSession = .shared,
+        builder: URLRequestBuilder = .shared
+    ) {
+        self.storage = storage
+        self.urlSession = urlSession
+        self.builder = builder
+    }
     
-    func fetchOAuthToken(_ code: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func fetchOAuthToken(_ code: String, completion: @escaping (Result<String, Error>) -> Void
+    ) {
         assert(Thread.isMainThread)
         guard code != lastCode else { return }
         currentTask = nil
@@ -28,7 +37,7 @@ final class OAuth2Service {
         }
         let task = urlSession.objectTask(for: request) { [weak self] (response: Result<OAuthTokenResponseBody, Error>) in
             DispatchQueue.main.async {
-                guard let self = self else { return }
+                guard let self else { return }
                 switch response {
                 case .success(let body):
                     let authToken = body.accessToken
@@ -64,7 +73,7 @@ final class OAuth2Service {
         let scope: String
         let createdAt: Int
         
-        private enum CodingKeys: String, CodingKey {
+        enum CodingKeys: String, CodingKey {
             case accessToken = "access_token"
             case tokenType = "token_type"
             case scope

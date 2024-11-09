@@ -62,7 +62,7 @@ final class ProfileViewController: UIViewController {
             with: UIImage(named: "logout_button") ?? .init(),
             target: ProfileViewController?.self,
             action: #selector(Self.didTapLogoutButton))
-        button.tintColor =  .red
+        button.tintColor = .ypRed
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

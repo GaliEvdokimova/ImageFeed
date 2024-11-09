@@ -8,7 +8,6 @@
 import UIKit
 
 final class SplashViewController: UIViewController, AuthViewControllerDelegate {
-    private let showAuthenticationScreenSegueIdentifier = "ShowAuthenticationScreen"
     private let service = OAuth2Service.shared
     private let storage = OAuth2TokenStorage.shared
     private var check = false
@@ -87,7 +86,7 @@ final class SplashViewController: UIViewController, AuthViewControllerDelegate {
             fatalError("Invalid Configuration")
         }
         let tabBarController = UIStoryboard(name: "Main", bundle: .main)
-            .instantiateViewController(identifier: "TabBarViewController")
+            .instantiateViewController(withIdentifier: "TabBarViewController")
         window.rootViewController = tabBarController
     }
     
@@ -101,6 +100,7 @@ final class SplashViewController: UIViewController, AuthViewControllerDelegate {
     }
     
     func authViewController(_ vc: AuthViewController, didAuthenticateWithCode code: String) {
+        UIBlockingProgressHUD.show()
         dismiss(animated: true) { [weak self] in
             guard let self else { return }
             self.fetchOAuthToken(code)
@@ -110,7 +110,7 @@ final class SplashViewController: UIViewController, AuthViewControllerDelegate {
     private func fetchOAuthToken(_ code: String) {
         UIBlockingProgressHUD.show()
         service.fetchOAuthToken(code) { [weak self] result in
-            guard let self = self else { return }
+            guard let self else { return }
             switch result {
             case .success(_):
                 self.fetchProfile()

@@ -28,8 +28,13 @@ final class SingleImageViewController: UIViewController {
         
         guard let image else { return }
         imageView.image = image
-        imageView.frame.size = image.size
-        rescaleAndCenterImageInScrollView(image: image)
+        rescaleAndCenterImageInScrollView(image: image ?? UIImage())
+        scrollView.minimumZoomScale = 0.1
+        scrollView.maximumZoomScale = 1.25
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
     }
     
     @IBAction func didTapBackButton(_ sender: Any) {
@@ -37,10 +42,10 @@ final class SingleImageViewController: UIViewController {
     }
     
     @IBAction func didTapShareButton(_ sender: UIButton) {
-        guard let image else { return }
         let share = UIActivityViewController(
-            activityItems: [image],
-            applicationActivities: nil)
+            activityItems: [image as Any],
+            applicationActivities: nil
+        )
         present(share, animated: true, completion: nil)
     }
     
@@ -66,5 +71,12 @@ final class SingleImageViewController: UIViewController {
 extension SingleImageViewController: UIScrollViewDelegate {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         imageView
+    }
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        let halfWidth = (scrollView.bounds.size.width - imageView.frame.size
+               .width) / 2
+        let halfHeight = (scrollView.bounds.size.height - imageView.frame.size
+               .height) / 2
+        scrollView.contentInset = .init(top: halfHeight, left: halfWidth, bottom: 0, right: 0)
     }
 }
