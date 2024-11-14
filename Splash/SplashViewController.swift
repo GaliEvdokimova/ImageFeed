@@ -49,6 +49,7 @@ final class SplashViewController: UIViewController, AuthViewControllerDelegate {
         if storage.token != nil {
             UIBlockingProgressHUD.show()
             fetchProfile()
+            UIBlockingProgressHUD.dismiss()
             switchToTabBarController()
         } else {
             switchToAuthController()
