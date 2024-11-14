@@ -15,7 +15,7 @@ final class SplashViewController: UIViewController, AuthViewControllerDelegate {
     private let profileImageService = ProfileImageService.shared
     private var profile: Profile?
     
-    private let splashImageView: UIImageView = {
+    private lazy var splashImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "splash_screen_logo")
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -49,7 +49,6 @@ final class SplashViewController: UIViewController, AuthViewControllerDelegate {
         if storage.token != nil {
             UIBlockingProgressHUD.show()
             fetchProfile()
-            UIBlockingProgressHUD.dismiss()
             switchToTabBarController()
         } else {
             switchToAuthController()
