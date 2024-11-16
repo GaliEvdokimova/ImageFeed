@@ -7,6 +7,15 @@
 
 import UIKit
 
+extension String {
+    private static let formatterDateISO = ISO8601DateFormatter()
+    
+    func convertStringToDateFormat() -> Date? {
+        let date = String.formatterDateISO.date(from: self)
+        return date
+    }
+}
+
 struct Photo {
     let id: String
     let size: CGSize
