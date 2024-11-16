@@ -51,7 +51,7 @@ final class OAuth2Service {
         self.currentTask = task
         task.resume()
     }
-
+    
     
     // MARK: - Private Methods
     private func makeTokenRequest(code: String) -> URLRequest? {

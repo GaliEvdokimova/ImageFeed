@@ -28,29 +28,29 @@ extension URLSession {
         }
         
         let task = dataTask(with: request, completionHandler: { data, response, error in
-                if let data,
-                    let response,
-                    let statusCode = (response as? HTTPURLResponse)?.statusCode {
-                    if 200 ..< 300 ~= statusCode {
-                        do {
-                            let decoder = JSONDecoder()
-                            let result = try decoder.decode(T.self, from: data)
-                            fulfillCompletion(.success(result))
-                        } catch {
-                            fulfillCompletion(.failure(NetworkError.decodingError(error)))
-                        }
-                    } else {
-                        fulfillCompletion(.failure(NetworkError.httpStatusCode(statusCode)))
-                        print("Invalid get access token response: \(statusCode)")
+            if let data,
+               let response,
+               let statusCode = (response as? HTTPURLResponse)?.statusCode {
+                if 200 ..< 300 ~= statusCode {
+                    do {
+                        let decoder = JSONDecoder()
+                        let result = try decoder.decode(T.self, from: data)
+                        fulfillCompletion(.success(result))
+                    } catch {
+                        fulfillCompletion(.failure(NetworkError.decodingError(error)))
                     }
-                } else if let error {
-                    fulfillCompletion(.failure(NetworkError.urlRequestError(error)))
-                    print("Request error: \(error)")
                 } else {
-                    fulfillCompletion(.failure(NetworkError.urlSessionError))
-                    print("Session error")
+                    fulfillCompletion(.failure(NetworkError.httpStatusCode(statusCode)))
+                    print("Invalid get access token response: \(statusCode)")
                 }
-            })
+            } else if let error {
+                fulfillCompletion(.failure(NetworkError.urlRequestError(error)))
+                print("Request error: \(error)")
+            } else {
+                fulfillCompletion(.failure(NetworkError.urlSessionError))
+                print("Session error")
+            }
+        })
         task.resume()
         return task
     }

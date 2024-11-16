@@ -46,11 +46,11 @@ final class ProfileService {
         self.currentTask = task
         task.resume()
     }
-
-private func makeFetchProfileRequest() -> URLRequest? {
-    builder.makeHTTPRequest(
-        path: "/me",
-        httpMethod: "GET",
-        defaultBaseURL: Constants.defaultBaseURL)
+    
+    private func makeFetchProfileRequest() -> URLRequest? {
+        builder.makeHTTPRequest(
+            path: "/me",
+            httpMethod: "GET",
+            defaultBaseURL: Constants.defaultBaseURL)
+    }
 }
-        }

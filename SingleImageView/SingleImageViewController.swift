@@ -74,9 +74,9 @@ extension SingleImageViewController: UIScrollViewDelegate {
     }
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
         let halfWidth = (scrollView.bounds.size.width - imageView.frame.size
-               .width) / 2
+            .width) / 2
         let halfHeight = (scrollView.bounds.size.height - imageView.frame.size
-               .height) / 2
+            .height) / 2
         scrollView.contentInset = .init(top: halfHeight, left: halfWidth, bottom: 0, right: 0)
     }
 }

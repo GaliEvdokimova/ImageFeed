@@ -16,7 +16,7 @@ final class ProfileViewController: UIViewController {
         name: "Екатерина Новикова",
         loginName: "@ekaterina_nov",
         bio: "Hello, world!"
-        )
+    )
     
     private var profileImageServiceObserver: NSObjectProtocol?
     
@@ -138,23 +138,23 @@ final class ProfileViewController: UIViewController {
         avatarImageView.kf.indicatorType = .activity
         avatarImageView.kf.setImage(with: url)
     }
-        
+    
     private func setupProfileViewConstrains() {
         NSLayoutConstraint.activate([
-        avatarImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
-        avatarImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-        avatarImageView.widthAnchor.constraint(equalToConstant: 70),
-        avatarImageView.heightAnchor.constraint(equalToConstant: 70),
-        nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.leadingAnchor),
-        nameLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 8),
-        loginNameLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-        loginNameLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 8),
-        descriptionLabel.leadingAnchor.constraint(equalTo: loginNameLabel.leadingAnchor),
-        descriptionLabel.topAnchor.constraint(equalTo: loginNameLabel.bottomAnchor, constant: 8),
-        logoutButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 55),
-        logoutButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
-        logoutButton.widthAnchor.constraint(equalToConstant: 24),
-        logoutButton.heightAnchor.constraint(equalToConstant: 24)
+            avatarImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
+            avatarImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 70),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 70),
+            nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.leadingAnchor),
+            nameLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 8),
+            loginNameLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+            loginNameLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 8),
+            descriptionLabel.leadingAnchor.constraint(equalTo: loginNameLabel.leadingAnchor),
+            descriptionLabel.topAnchor.constraint(equalTo: loginNameLabel.bottomAnchor, constant: 8),
+            logoutButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 55),
+            logoutButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            logoutButton.widthAnchor.constraint(equalToConstant: 24),
+            logoutButton.heightAnchor.constraint(equalToConstant: 24)
         ])
     }
     
@@ -163,7 +163,7 @@ final class ProfileViewController: UIViewController {
             title: "Пока, пока!",
             message:  "Уверены, что хотите выйти?",
             preferredStyle: .alert
-            )
+        )
         alert.addAction(UIAlertAction(
             title: "Да",
             style: .default,
@@ -172,7 +172,7 @@ final class ProfileViewController: UIViewController {
             title: "Нет",
             style: .default,
             handler: nil))
-            self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

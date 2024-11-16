@@ -30,16 +30,16 @@ struct Profile {
     let bio: String?
 }
 
-    extension Profile {
-        init(profile: ProfileResult) {
-            self.init(
-                username: profile.userName,
-                name: "\(profile.firstName ?? "") \(profile.lastName ?? "")",
-                loginName: "@\(profile.userName)",
-                bio: profile.bio
-            )
-        }
+extension Profile {
+    init(profile: ProfileResult) {
+        self.init(
+            username: profile.userName,
+            name: "\(profile.firstName ?? "") \(profile.lastName ?? "")",
+            loginName: "@\(profile.userName)",
+            bio: profile.bio
+        )
     }
+}
 
 struct ProfileImage: Codable {
     let small: String?

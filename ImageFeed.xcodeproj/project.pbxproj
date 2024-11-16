@@ -23,6 +23,8 @@
 		20ADCB182CC80250008C400D /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ADCB172CC80250008C400D /* ProfileService.swift */; };
 		20ADCB1A2CC8061B008C400D /* ProfileStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ADCB192CC8061B008C400D /* ProfileStructures.swift */; };
 		20ADCB1C2CC85372008C400D /* URLRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ADCB1B2CC85372008C400D /* URLRequestBuilder.swift */; };
+		20C6B7CA2CE8CD570003E8CD /* ImagesListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C6B7C82CE8CD570003E8CD /* ImagesListService.swift */; };
+		20C6B7CB2CE8CD570003E8CD /* ImagesListStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C6B7C92CE8CD570003E8CD /* ImagesListStructures.swift */; };
 		20D1F2702CADF49400752A97 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D1F26F2CADF42900752A97 /* URLSession.swift */; };
 		20DF41A92C10837800769039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF41A82C10837800769039 /* AppDelegate.swift */; };
 		20DF41AB2C10837800769039 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF41AA2C10837800769039 /* SceneDelegate.swift */; };
@@ -48,6 +50,8 @@
 		20ADCB172CC80250008C400D /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		20ADCB192CC8061B008C400D /* ProfileStructures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStructures.swift; sourceTree = "<group>"; };
 		20ADCB1B2CC85372008C400D /* URLRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestBuilder.swift; sourceTree = "<group>"; };
+		20C6B7C82CE8CD570003E8CD /* ImagesListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListService.swift; sourceTree = "<group>"; };
+		20C6B7C92CE8CD570003E8CD /* ImagesListStructures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListStructures.swift; sourceTree = "<group>"; };
 		20D1F26F2CADF42900752A97 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
 		20DF41A52C10837800769039 /* ImageFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20DF41A82C10837800769039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 		2051C3B22C22ECAD006647EC /* ImagesList */ = {
 			isa = PBXGroup;
 			children = (
+				20C6B7C92CE8CD570003E8CD /* ImagesListStructures.swift */,
+				20C6B7C82CE8CD570003E8CD /* ImagesListService.swift */,
 				20DF41AC2C10837800769039 /* ImagesListViewController.swift */,
 				2051C3AD2C22EBE2006647EC /* ImagesListCell.swift */,
 			);
@@ -280,6 +286,8 @@
 				20ADCB1C2CC85372008C400D /* URLRequestBuilder.swift in Sources */,
 				2017B8212C51171F004A961F /* SingleImageViewController.swift in Sources */,
 				205B48F72C68953F0060ADBC /* WebViewViewController.swift in Sources */,
+				20C6B7CA2CE8CD570003E8CD /* ImagesListService.swift in Sources */,
+				20C6B7CB2CE8CD570003E8CD /* ImagesListStructures.swift in Sources */,
 				205B48F92C6895670060ADBC /* AuthViewController.swift in Sources */,
 				20DF41AB2C10837800769039 /* SceneDelegate.swift in Sources */,
 				20671B702C98ABF80085AEA6 /* SplashViewController.swift in Sources */,

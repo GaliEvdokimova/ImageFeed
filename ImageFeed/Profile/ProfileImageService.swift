@@ -11,7 +11,7 @@ import UIKit
 final class ProfileImageService {
     static let shared = ProfileImageService()
     static let didChangeNotification = Notification.Name(rawValue: "ProfileImageProviderDidChange")
-
+    
     private let urlSession = URLSession.shared
     private var currentTask: URLSessionTask?
     private let builder: URLRequestBuilder
