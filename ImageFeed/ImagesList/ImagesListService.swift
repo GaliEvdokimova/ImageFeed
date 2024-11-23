@@ -44,9 +44,46 @@ final class ImagesListService {
                             name: ImagesListService.didChangeNotification,
                             object: nil)
                 case .failure(let error):
-                    print(error)
+                    print(error.localizedDescription)
                 }
                 self.currentTask = nil
+            }
+        }
+        self.currentTask = task
+        task.resume()
+    }
+    
+    func changeLike(photoId: String,
+                    isLike: Bool,
+                    _ completion: @escaping (Result<Void, Error>) -> Void
+    ) { assert(Thread.isMainThread)
+        guard let request = makeLikeRequest(photoID: photoId, isLike: isLike) else {
+            print("Invalid like")
+            return
+        }
+        let task = urlSession.objectTask(for: request) {
+            [weak self] (result: Result<LikeResult, Error>) in
+            DispatchQueue.main.async {
+                guard let self else { return }
+                switch result {
+                case .success:
+                    if let index = self.photos.firstIndex(where: { $0.id == photoId }) {
+                        let photo = self.photos[index]
+                        let newPhoto = Photo(id: photo.id,
+                                             size: photo.size,
+                                             createdAt: photo.createdAt,
+                                             welcomeDescription: photo.welcomeDescription,
+                                             thumbImageURL: photo.thumbImageURL,
+                                             largeImageURL: photo.largeImageURL,
+                                             isLiked: !photo.isLiked
+                        )
+                        self.photos[index] = newPhoto
+                        completion(.success(()))
+                    }
+                case .failure(let error):
+                    completion(.failure(error))
+                    print(error.localizedDescription)
+                }
             }
         }
         self.currentTask = task
