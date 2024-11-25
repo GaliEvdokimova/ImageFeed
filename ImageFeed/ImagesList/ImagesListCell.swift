@@ -17,17 +17,16 @@ final class ImagesListCell: UITableViewCell {
     
     @IBOutlet var dateLabel: UILabel!
     
-    
-    @IBAction func likeButtonClicked(_ sender: Any) {
-        delegate?.imageListCellDidTapLike(self)
-    }
-    
     weak var delegate: ImagesListCellDelegate?
     
     override func prepareForReuse() {
         super.prepareForReuse()
         // Отменяем загрузку, чтобы избежать багов при переиспользовании ячеек
         cellImage.kf.cancelDownloadTask()
+    }
+    
+    @IBAction func likeButtonClicked(_ sender: Any) {
+        delegate?.imageListCellDidTapLike(self)
     }
     
     func setIsLiked(isLiked: Bool) {
