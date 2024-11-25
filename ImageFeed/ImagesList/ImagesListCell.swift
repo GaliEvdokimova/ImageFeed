@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class ImagesListCell: UITableViewCell {
     static let reuseIdentifier = "ImagesListCell"
@@ -15,4 +16,29 @@ final class ImagesListCell: UITableViewCell {
     @IBOutlet var likeButton: UIButton!
     
     @IBOutlet var dateLabel: UILabel!
+    
+    weak var delegate: ImagesListCellDelegate?
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        // Отменяем загрузку, чтобы избежать багов при переиспользовании ячеек
+        cellImage.kf.cancelDownloadTask()
+    }
+    
+    @IBAction func likeButtonClicked(_ sender: Any) {
+        delegate?.imageListCellDidTapLike(self)
+    }
+    
+    func setIsLiked(isLiked: Bool) {
+        let likeImage = isLiked ? UIImage(named: "like_button_on") : UIImage(named: "like_button_off")
+        likeButton.setImage(likeImage, for: .normal)
+    }
+    
+    func date(_ createdAt: Date?) {
+        if let createdAt = createdAt {
+            dateLabel.text = DateFormatter.dateFormatter.string(from: createdAt)
+        } else {
+            dateLabel.text = ""
+        }
+    }
 }

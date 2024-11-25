@@ -45,13 +45,14 @@ final class OAuth2Service {
                     completion(.success(authToken))
                 case .failure(let error):
                     completion(.failure(error))
+                    print("OAuth2Service Error: \(error)")
                 }
             }
         }
         self.currentTask = task
         task.resume()
     }
-
+    
     
     // MARK: - Private Methods
     private func makeTokenRequest(code: String) -> URLRequest? {

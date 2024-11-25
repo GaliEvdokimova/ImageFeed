@@ -31,11 +31,11 @@ final class AuthViewController: UIViewController, WebViewViewControllerDelegate 
             super.prepare(for: segue, sender: sender)
         }
     }
-
+    
     func webViewViewController(_ vc: WebViewViewController, didAuthenticateWithCode code: String) {
         delegate?.authViewController(self, didAuthenticateWithCode: code)
     }
-
+    
     func webViewViewControllerDidCancel(_ vc: WebViewViewController) {
         dismiss(animated: true)
     }

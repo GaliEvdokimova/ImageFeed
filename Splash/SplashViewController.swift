@@ -123,9 +123,9 @@ final class SplashViewController: UIViewController, AuthViewControllerDelegate {
     
     private func showAlert() {
         let alert = UIAlertController(
-                    title: "Что-то пошло не так(",
-                    message: "Не удалось войти в систему",
-                    preferredStyle: .alert)
+            title: "Что-то пошло не так(",
+            message: "Не удалось войти в систему",
+            preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "Ок", style: .cancel) { [weak self ] _ in
             guard let self else { return }
             switchToAuthController()

@@ -7,6 +7,7 @@
 //получение базовой информации профиля
 
 import UIKit
+import WebKit
 
 final class ProfileService {
     static let shared = ProfileService()
@@ -15,10 +16,13 @@ final class ProfileService {
     private var currentTask: URLSessionTask?
     private(set) var profile: Profile?
     private var lastToken: String?
+    private let storage: OAuth2TokenStorage
     private static let profileInfoUrl = Constants.defaultBaseURL + "/me"
     
-    init(builder: URLRequestBuilder = .shared) {
+    init(builder: URLRequestBuilder = .shared,
+         storage: OAuth2TokenStorage = .shared) {
         self.builder = builder
+        self.storage = storage
     }
     
     func fetchProfile(completion: @escaping (Result<Profile, Error>) -> Void) {
@@ -40,17 +44,32 @@ final class ProfileService {
                     completion(.success(profile))
                 case .failure(let error):
                     completion(.failure(error))
+                    print("ProfileService Error: \(error)")
                 }
             }
         }
         self.currentTask = task
         task.resume()
     }
-
-private func makeFetchProfileRequest() -> URLRequest? {
-    builder.makeHTTPRequest(
-        path: "/me",
-        httpMethod: "GET",
-        defaultBaseURL: Constants.defaultBaseURL)
-}
+    
+    func logout() {
+        ProfileService.cleanCookies()
+        storage.clearToken()
+    }
+    
+    static func cleanCookies() {
+        HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+        WKWebsiteDataStore.default().fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
+            records.forEach { record in
+                WKWebsiteDataStore.default().removeData(ofTypes: record.dataTypes, for: [record], completionHandler: {})
+            }
         }
+    }
+    
+    private func makeFetchProfileRequest() -> URLRequest? {
+        builder.makeHTTPRequest(
+            path: "/me",
+            httpMethod: "GET",
+            defaultBaseURL: Constants.defaultBaseURL)
+    }
+}
