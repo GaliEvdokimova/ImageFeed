@@ -65,7 +65,7 @@ final class WebViewViewController: UIViewController, WKNavigationDelegate {
         urlComponents.queryItems = [
             URLQueryItem(name: "client_id", value: Constants.accessKey),
             URLQueryItem(name: "redirect_uri", value: Constants.redirectURI),
-            URLQueryItem(name: "response_type", value: "code"),
+            URLQueryItem(name: "response_type", value: code),
             URLQueryItem(name: "scope", value: Constants.accessScope)
         ]
         if let url = urlComponents.url {
