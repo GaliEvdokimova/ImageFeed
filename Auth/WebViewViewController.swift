@@ -28,7 +28,7 @@ final class WebViewViewController: UIViewController, WKNavigationDelegate, WebVi
     @IBOutlet private var progressView: UIProgressView!
     
     weak var delegate: WebViewViewControllerDelegate?
-
+    
     var presenter: WebViewPresenterProtocol?
     
     private let code = "code"
@@ -36,6 +36,7 @@ final class WebViewViewController: UIViewController, WKNavigationDelegate, WebVi
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .ypBlack
+        webView.accessibilityIdentifier = "UnsplashWebView"
         webView.navigationDelegate = self
         presenter?.viewDidLoad()
     }
@@ -71,7 +72,7 @@ final class WebViewViewController: UIViewController, WKNavigationDelegate, WebVi
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
-                                                                                      
+    
     func webView(
         _ webView: WKWebView,
         decidePolicyFor navigationAction: WKNavigationAction,

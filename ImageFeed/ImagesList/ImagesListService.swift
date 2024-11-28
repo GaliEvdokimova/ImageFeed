@@ -8,6 +8,7 @@
 import UIKit
 
 final class ImagesListService {
+    static let shared = ImagesListService()
     private(set) var photos: [Photo] = []
     private var lastLoadedPage: Int?
     private let urlSession = URLSession.shared
