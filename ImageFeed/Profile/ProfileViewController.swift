@@ -8,7 +8,14 @@
 import UIKit
 import Kingfisher
 
-final class ProfileViewController: UIViewController {
+protocol ProfileViewControllerProtocol: AnyObject {
+    func updateAvatar(url: URL?)
+    func updateProfileDetails(profile: Profile?)
+}
+
+final class ProfileViewController: UIViewController, ProfileViewControllerProtocol {
+    
+    lazy var presenter: ProfilePresenterProtocol = ProfilePresenter(view: self)
     let profileService = ProfileService.shared
     let profileImageService = ProfileImageService.shared
     private var profile: Profile = Profile(
@@ -64,13 +71,14 @@ final class ProfileViewController: UIViewController {
             action: #selector(Self.didTapLogoutButton))
         button.tintColor = .ypRed
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityIdentifier = "Logout button"
         return button
     }()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .ypBlack
         
         view.addSubview(avatarImageView)
         view.addSubview(nameLabel)
@@ -78,25 +86,11 @@ final class ProfileViewController: UIViewController {
         view.addSubview(descriptionLabel)
         view.addSubview(logoutButton)
         
-        if let profile = profileService.profile {
-            self.profile = profile
-            updateProfileDetails(profile: profile)
-        } else {
-            print("Error")
-        }
-        
         if let url = profileImageService.avatarURL {
             updateAvatar(url: url)
         }
         
-        profileImageServiceObserver = NotificationCenter.default
-            .addObserver(
-                forName: ProfileImageService.didChangeNotification,
-                object: nil,
-                queue: .main
-            ) { [weak self] notification in
-                self?.updateAvatar(notification: notification)
-            }
+        presenter.viewDidLoad()
         setupProfileViewConstrains()
     }
     
@@ -108,21 +102,20 @@ final class ProfileViewController: UIViewController {
         self.nameLabel.text = profile.name
         self.descriptionLabel.text = profile.bio
         self.loginNameLabel.text = profile.loginName
-        
-        profileImageService.fetchProfileImageURL(userName: profile.username) { _ in }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         .lightContent
     }
     
-    private func updateProfileDetails(profile: Profile) {
+    func updateProfileDetails(profile: Profile?) {
+        guard let profile else { return }
         self.profile = profile
         nameLabel.text = profile.name
         loginNameLabel.text = profile.loginName
         descriptionLabel.text = profile.bio
     }
-    
+
     @objc
     private func updateAvatar(notification: Notification) {
         guard
@@ -134,7 +127,7 @@ final class ProfileViewController: UIViewController {
         updateAvatar(url: url)
     }
     
-    private func updateAvatar(url: URL) {
+    func updateAvatar(url: URL?) {
         avatarImageView.kf.indicatorType = .activity
         avatarImageView.kf.setImage(with: url)
     }
